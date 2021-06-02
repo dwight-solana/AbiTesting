@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "project for storing ABI testing scripts",
   "scripts": {
-    "api-tests-dev": "newman run AbiTesting.postman_collectiont.json"
+    "api-tests-dev": "newman run AbiTesting.postman_collectiont.json",
+    "api-tests-demo": "newman run Demo.postman_collectiont.json"
   },
   "author": "Ruben Fernando",
   "dependencies": {
