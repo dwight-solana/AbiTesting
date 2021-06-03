@@ -1,0 +1,170 @@
+{
+	"info": {
+		"_postman_id": "c21aac4e-df43-4870-ab83-ae41ef4063be",
+		"name": "Demo Page",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Weather",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response.name);\r",
+							"\r",
+							"pm.test(\"City is correct\", () => {\r",
+							"    pm.expect(response.name).to.eql(\"Manila\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/weather?q=Manila&appid=941b4d9722a530fdda3e57139721a6f2",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Manila"
+						},
+						{
+							"key": "appid",
+							"value": "941b4d9722a530fdda3e57139721a6f2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Load Employee Page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://10.156.9.132:9090/ws/rest/pocV1/request/getEmployee",
+					"protocol": "http",
+					"host": [
+						"10",
+						"156",
+						"9",
+						"132"
+					],
+					"port": "9090",
+					"path": [
+						"ws",
+						"rest",
+						"pocV1",
+						"request",
+						"getEmployee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Employee Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://10.156.9.132:9090/ws/rest/pocV1/request/insertEmployee?first_name&last_name",
+					"protocol": "http",
+					"host": [
+						"10",
+						"156",
+						"9",
+						"132"
+					],
+					"port": "9090",
+					"path": [
+						"ws",
+						"rest",
+						"pocV1",
+						"request",
+						"insertEmployee"
+					],
+					"query": [
+						{
+							"key": "first_name",
+							"value": null
+						},
+						{
+							"key": "last_name",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseurl",
+			"value": "api.openweathermap.org/data/2.5/weather"
+		}
+	]
+}
